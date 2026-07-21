@@ -5,6 +5,7 @@ import Image from "next/image";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { Icon, type IconName } from "./components/Icon";
+import { withBasePath } from "../lib/basePath";
 
 const problemItems: [IconName, string, string][] = [
   ["unknown_document", "Unknown Origin", "No history of where the animal was sourced or its vaccination records."],
@@ -111,7 +112,7 @@ export default function Home() {
   }, []);
   return <div id="top"><div className="scroll-progress" aria-hidden="true" /><div className={`page-loader ${isLoading ? "" : "page-loader-hidden"}`} aria-hidden="true"><div className="loader-mark"><Icon name="agriculture" filled /></div><span>AnimGrow</span><i /></div><Header /><main>
     <section className="hero">
-      <Image src="/hero-pasture.jpg" alt="Lush Ghanaian pasture with healthy sheep and goats grazing" fill priority sizes="100vw" /><div className="hero-overlay" />
+      <Image src={withBasePath("/hero-pasture.jpg")} alt="Lush Ghanaian pasture with healthy sheep and goats grazing" fill priority sizes="100vw" /><div className="hero-overlay" />
       <div className="container hero-content"><div><h1>Know exactly what you&apos;re eating, before it&apos;s even ready.</h1><p>We raise healthy goats and sheep for you, so you never have to guess where your meat comes from. Premium Ghanaian livestock care, delivered with total honesty.</p><div className="hero-actions"><a className="gold-button" href="https://docs.google.com/forms/d/e/1FAIpQLSemoAjvyPABsaS9Z8dtIGXwmPyw54IOCf080nM0Ip3iSikZjg/viewform?usp=dialog" target="_blank" rel="noopener noreferrer">Get Early Access <Icon name="arrow_forward" /></a><a href="https://youtu.be/03FYZHWnfIM" target="_blank" rel="noopener noreferrer">How it Works</a></div></div></div>
     </section>
 
@@ -121,7 +122,7 @@ export default function Home() {
 
     <section className="section light-bg" id="trust"><div className="container"><h2 className="centered">The Four Pillars of AnimGrow</h2><div className="four-grid">{pillars.map(([icon, title, text, tone]) => <article className="card" key={title}><span className={`icon-box ${tone}`}><Icon name={icon} /></span><h3>{title}</h3><p>{text}</p></article>)}</div></div></section>
 
-    <section className="section"><div className="container assurance"><div className="assurance-copy"><span className="policy"><Icon name="verified_user" /> Livestock Assurance Policy</span><h2>Honesty, Even When Things Go Wrong</h2><p>Farming involves risks, and we believe in complete honesty. If your animal becomes sick, it is logged immediately by our veterinary staff and reported to your dashboard. You are never kept in the dark.</p><p>In the rare event an animal dies, <strong>we take the hit.</strong> We provide a replacement kid goat or sheep at no extra purchase cost. We also cover the feeding costs for the replacement until it reaches the same stage your original animal was at.</p><div className="assurance-note"><Icon name="check_circle" filled /><strong>Your investment is protected by our assurance policy.</strong></div></div><Image src="/vet-goat.jpg" alt="Professional veterinarian inspecting a healthy goat" width={1200} height={1200} sizes="(max-width: 800px) 100vw, 50vw" /></div></section>
+    <section className="section"><div className="container assurance"><div className="assurance-copy"><span className="policy"><Icon name="verified_user" /> Livestock Assurance Policy</span><h2>Honesty, Even When Things Go Wrong</h2><p>Farming involves risks, and we believe in complete honesty. If your animal becomes sick, it is logged immediately by our veterinary staff and reported to your dashboard. You are never kept in the dark.</p><p>In the rare event an animal dies, <strong>we take the hit.</strong> We provide a replacement kid goat or sheep at no extra purchase cost. We also cover the feeding costs for the replacement until it reaches the same stage your original animal was at.</p><div className="assurance-note"><Icon name="check_circle" filled /><strong>Your investment is protected by our assurance policy.</strong></div></div><Image src={withBasePath("/vet-goat.jpg")} alt="Professional veterinarian inspecting a healthy goat" width={1200} height={1200} sizes="(max-width: 800px) 100vw, 50vw" /></div></section>
 
     <section className="section pricing" id="services"><div className="container"><div className="centered pricing-head"><h2>Clear, Service-Based Pricing</h2><p>You only pay for the specific services you choose to use. No hidden fees, just transparent costs for quality care.</p></div><div className="service-grid">{services.map(([n, title, text]) => <article className="service-card" key={n}><h3>{n}. {title}</h3><p>{text}</p></article>)}<article className="start-card"><h3>Start Your Journey</h3><button>Create Account <Icon name="arrow_forward" /></button></article></div></div></section>
 
