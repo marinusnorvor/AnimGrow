@@ -1,0 +1,8 @@
+node_modules/
+.next/
+.env
+*.log
+stitch_animgrow_trust_landing_page/
+Design/
+commands.txt
+prompt.txt
