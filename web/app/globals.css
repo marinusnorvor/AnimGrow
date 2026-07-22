@@ -113,3 +113,41 @@ html { scroll-padding-top:88px; }
   .legal-detail-grid { gap:1rem; }
   .legal-footer { padding:3rem 0 1.5rem; }
 }
+
+/* Button and card micro-interactions */
+button:not(.menu-button),
+.gold-button,
+.hero-actions a {
+  transition:transform .18s ease-out,box-shadow .18s ease-out,background .18s ease-out,opacity .18s ease-out;
+}
+
+button:not(.menu-button):active,
+.gold-button:active,
+.hero-actions a:active {
+  transform:scale(.97);
+}
+
+.card,
+.service-card,
+.start-card,
+.faq-item {
+  transition:transform .18s ease-out,box-shadow .18s ease-out,background .18s ease-out,opacity .18s ease-out;
+}
+
+@media (hover:hover) and (pointer:fine) {
+  button:not(.menu-button):hover,
+  .gold-button:hover,
+  .hero-actions a:hover {
+    transform:scale(1.02);
+    box-shadow:0 12px 24px rgba(1,45,29,.16);
+    opacity:.96;
+  }
+
+  .card:hover,
+  .service-card:hover,
+  .start-card:hover,
+  .faq-item:hover {
+    transform:translateY(-4px);
+    box-shadow:0 16px 30px rgba(1,45,29,.14);
+  }
+}
