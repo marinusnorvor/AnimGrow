@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Icon } from "./Icon";
 
 const footerLinks = [
@@ -22,11 +23,25 @@ export default function Footer() {
         {footerLinks.map(([title, links]) => (
           <div className="footer-column" key={title as string}>
             <h5>{title}</h5>
-            {(links as string[]).map((link) => (
-              <a href="#" key={link}>
-                {link}
-              </a>
-            ))}
+            {(links as string[]).map((link) =>
+              link === "Terms of Service" ? (
+                <Link href="/legal#terms" key={link}>
+                  {link}
+                </Link>
+              ) : link === "Privacy Policy" ? (
+                <Link href="/legal#privacy" key={link}>
+                  {link}
+                </Link>
+              ) : link === "Traceability Policy" ? (
+                <Link href="/legal" key={link}>
+                  {link}
+                </Link>
+              ) : (
+                <a href="#" key={link}>
+                  {link}
+                </a>
+              )
+            )}
           </div>
         ))}
 
