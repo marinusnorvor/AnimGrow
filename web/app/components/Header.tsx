@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Icon, IconName } from "./Icon";
 
@@ -41,11 +42,17 @@ export default function Header({
         </a>
 
         <div className="desktop-nav">
-          {links.map(([href, label]) => (
-            <a href={href} key={href}>
-              {label}
-            </a>
-          ))}
+          {links.map(([href, label]) =>
+            label === "Home" ? (
+              <Link href="/" key={href}>
+                {label}
+              </Link>
+            ) : (
+              <a href={href} key={href}>
+                {label}
+              </a>
+            )
+          )}
           <button className="sign-in">Sign In</button>
         </div>
 
@@ -60,11 +67,17 @@ export default function Header({
       </nav>
 
       <div className={`mobile-menu ${open ? "mobile-menu-open" : ""}`}>
-        {links.map(([href, label]) => (
-          <a href={href} onClick={() => setOpen(false)} key={href}>
-            {label}
-          </a>
-        ))}
+        {links.map(([href, label]) =>
+          label === "Home" ? (
+            <Link href="/" onClick={() => setOpen(false)} key={href}>
+              {label}
+            </Link>
+          ) : (
+            <a href={href} onClick={() => setOpen(false)} key={href}>
+              {label}
+            </a>
+          )
+        )}
         <button onClick={() => setOpen(false)}>Sign In</button>
       </div>
     </header>
